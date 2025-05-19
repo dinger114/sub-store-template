@@ -3,13 +3,13 @@
     "servers": [
       {
         "tag": "google",
-        "type": "https",
+        "type": "tcp",
         "server": "8.8.8.8",
         "detour": "proxy"
       },
       {
         "tag": "ali",
-        "type": "https",
+        "type": "udp",
         "server": "223.5.5.5",
         "detour": "direct"
       },
@@ -663,7 +663,7 @@
   },
   "log": {
     "disabled": false,
-    "level": "info",
+    "level": "erro",
     "timestamp": true
   }
 }
