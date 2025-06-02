@@ -18,6 +18,9 @@ config.outbounds.push(...proxies)
 config.outbounds.forEach(i => {
   if (Array.isArray(i.outbounds)) {
     i.outbounds.push(...getTags(proxies))
+    if (i.tag !== "proxy" && !i.outbounds.includes("proxy")) {
+      i.outbounds.push("proxy")
+    }
   }
 })
 
@@ -27,9 +30,9 @@ config.outbounds.forEach(outbound => {
       config.outbounds.push(compatible_outbound)
       compatible = true
     }
-    outbound.outbounds.push(compatible_outbound.tag);
+    outbound.outbounds.push(compatible_outbound.tag)
   }
-});
+})
 
 $content = JSON.stringify(config, null, 2)
 
