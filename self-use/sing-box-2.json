@@ -105,24 +105,28 @@
       "type": "selector",
       "tag": "AI",
       "outbounds": [ ],
+      "default": "proxy",
       "interrupt_exist_connections": true
     },
     {
       "type": "selector",
       "tag": "Telegram",
       "outbounds": [ ],
+      "default": "proxy",
       "interrupt_exist_connections": true
     },
     {
       "type": "selector",
       "tag": "Youtube",
       "outbounds": [ ],
+      "default": "proxy",
       "interrupt_exist_connections": true
     },
     {
       "type": "selector",
       "tag": "Microsoft",
       "outbounds": [ ],
+      "default": "proxy",
       "interrupt_exist_connections": true
     },
     {
