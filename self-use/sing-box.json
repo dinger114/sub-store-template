@@ -98,44 +98,31 @@
     {
       "type": "selector",
       "tag": "proxy",
-      "outbounds": [
-        "all"
-      ],
+      "outbounds": [ ],
       "interrupt_exist_connections": true
     },
     {
       "type": "selector",
       "tag": "AI",
-      "outbounds": [
-        "all"
-      ],
+      "outbounds": [ ],
       "interrupt_exist_connections": true
     },
     {
       "type": "selector",
       "tag": "Telegram",
-      "outbounds": [
-        "proxy",
-        "all"
-      ],
+      "outbounds": [ ],
       "interrupt_exist_connections": true
     },
     {
       "type": "selector",
       "tag": "Youtube",
-      "outbounds": [
-        "proxy",
-        "all"
-      ],
+      "outbounds": [ ],
       "interrupt_exist_connections": true
     },
     {
       "type": "selector",
       "tag": "Microsoft",
-      "outbounds": [
-        "proxy",
-        "all"
-      ],
+      "outbounds": [ ],
       "interrupt_exist_connections": true
     },
     {
