@@ -1,6 +1,6 @@
 {
   "log": {
-    "level": "info",
+    "level": "error",
     "output": "singbox.log",
     "timestamp": true
   },
@@ -49,7 +49,7 @@
           "geosite-cn"
         ],
         "action": "route",
-        "server": "ali"
+        "server": "dns_direct"
       },
       {
         "query_type": [
@@ -65,7 +65,7 @@
   },
   "ntp": {
     "enabled": true,
-    "interval": "30m0s",
+    "interval": "10m0s",
     "server": "time.apple.com",
     "server_port": 123
   },
