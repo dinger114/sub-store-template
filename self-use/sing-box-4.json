@@ -31,20 +31,6 @@
         "server": "dns_direct"
       },
       {
-        "type": "logical",
-        "mode": "and",
-        "rules": [
-          {
-            "clash_mode": "AllowAds",
-            "invert": true
-          },
-          {
-            "rule_set": "AWAvenue-Ads"
-          }
-        ],
-        "action": "reject"
-      },
-      {
         "rule_set": [
           "geosite-cn"
         ],
@@ -163,20 +149,6 @@
         "action": "reject"
       },
       {
-        "type": "logical",
-        "mode": "and",
-        "rules": [
-          {
-            "clash_mode": "AllowAds",
-            "invert": true
-          },
-          {
-            "rule_set": "AWAvenue-Ads"
-          }
-        ],
-        "action": "reject"
-      },
-      {
         "rule_set": [
           "geosite-ai"
         ],
@@ -225,14 +197,6 @@
         "tag": "geosite-youtube",
         "format": "binary",
         "url": "https://ghfast.top/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-youtube.srs",
-        "download_detour": "direct",
-        "update_interval": "24h"
-      },
-      {
-        "tag": "AWAvenue-Ads",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://ghfast.top/https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Singbox.srs",
         "download_detour": "direct",
         "update_interval": "24h"
       },
