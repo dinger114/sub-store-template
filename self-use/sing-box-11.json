@@ -49,10 +49,10 @@
               "A",
               "AAAA"
             ]
-          },
-          "action": "route",
-          "server": "remote"
-        ]
+          }
+        ],
+        "action": "route",
+        "server": "remote"
       },
       "independent_cache": true,
       "strategy": "prefer_ipv4",
