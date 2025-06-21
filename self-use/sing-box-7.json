@@ -13,9 +13,9 @@
         "server": "1.1.1.1"
       },
       {
-        "type": "https",
+        "type": "quic",
         "tag": "dns_direct",
-        "server": "223.6.6.6"
+        "server": "223.5.5.5"
       },
       {
         "tag": "remote",
@@ -38,16 +38,25 @@
         "server": "dns_direct"
       },
       {
-        "query_type": [
-          "A",
-          "AAAA"
-        ],
-        "action": "route",
-        "server": "remote"
-      }
-    ],
-    "independent_cache": true,
-    "strategy": "prefer_ipv4"
+        "type": "logical",
+        "mode": "and",
+        "rules": [
+          {
+            "rule_set": "geosite-geolocation-!cn"
+          },
+          {
+            "query_type": [
+              "A",
+              "AAAA"
+            ]
+          }
+        ]
+      },
+      "action": "route",
+      "server": "remote",
+      "independent_cache": true,
+      "strategy": "prefer_ipv4",
+      "final": "dns_direct"
   },
   "ntp": {
     "enabled": true,
