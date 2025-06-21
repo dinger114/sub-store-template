@@ -51,7 +51,7 @@
             ]
           }
         ]
-      },
+      ],
       "action": "route",
       "server": "remote",
       "independent_cache": true,
