@@ -1,0 +1,278 @@
+{
+  "log": {
+    "level": "error",
+    "output": "singbox.log",
+    "timestamp": true
+  },
+  "dns": {
+    "servers": [
+      {
+        "type": "https",
+        "tag": "dns_proxy",
+        "detour": "proxy",
+        "server": "1.1.1.1"
+      },
+      {
+        "type": "quic",
+        "tag": "dns_direct",
+        "server": "223.5.5.5"
+      },
+      {
+        "tag": "remote",
+        "type": "fakeip",
+        "inet4_range": "198.18.0.0/15",
+        "inet6_range": "fc00::/18"
+      }
+    ],
+    "rules": [
+      {
+        "clash_mode": "Direct",
+        "action": "route",
+        "server": "dns_direct"
+      },
+      {
+        "rule_set": [
+          "geosite-cn"
+        ],
+        "action": "route",
+        "server": "dns_direct"
+      },
+      {
+        "type": "logical",
+        "mode": "and",
+        "rules": [
+          {
+            "rule_set": "geosite-geolocation-!cn"
+          },
+          {
+            "query_type": [
+              "A",
+              "AAAA"
+            ]
+          }
+        ],
+        "action": "route",
+        "server": "remote"
+      }
+    ],
+    "independent_cache": true,
+    "strategy": "prefer_ipv4",
+    "final": "dns_direct"
+  },
+  "ntp": {
+    "enabled": true,
+    "interval": "10m0s",
+    "server": "time.apple.com",
+    "server_port": 123
+  },
+  "inbounds": [
+    {
+      "type": "mixed",
+      "tag": "mixed"
+      "listen": "::",
+      "listen_port": 7890,
+      "set_system_proxy": false
+    },
+    {
+      "type": "tproxy",
+      "tag": "tproxy",
+      "listen": "::",
+      "listen_port": 1536
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "selector",
+      "tag": "proxy",
+      "outbounds": [ ],
+      "interrupt_exist_connections": true
+    },
+    {
+      "type": "selector",
+      "tag": "AI",
+      "outbounds": [ ],
+      "default": "proxy",
+      "interrupt_exist_connections": true
+    },
+    {
+      "type": "selector",
+      "tag": "Telegram",
+      "outbounds": [ ],
+      "default": "proxy",
+      "interrupt_exist_connections": true
+    },
+    {
+      "type": "selector",
+      "tag": "Youtube",
+      "outbounds": [ ],
+      "default": "proxy",
+      "interrupt_exist_connections": true
+    },
+    {
+      "type": "selector",
+      "tag": "Microsoft",
+      "outbounds": [ ],
+      "default": "proxy",
+      "interrupt_exist_connections": true
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    }
+  ],
+  "route": {
+    "rules": [
+      {
+        "action": "sniff"
+      },
+      {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "port": 53
+          },
+          {
+            "protocol": "dns"
+          }
+        ],
+        "action": "hijack-dns"
+      },
+      {
+        "clash_mode": "Direct",
+        "action": "route",
+        "outbound": "direct"
+      },
+      {
+        "network": "udp",
+        "port": 443,
+        "action": "reject"
+      },
+      {
+        "rule_set": [
+          "geosite-ai"
+        ],
+        "action": "route",
+        "outbound": "AI"
+      },
+      {
+        "rule_set": [
+          "geosite-youtube",
+          "geosite-google"
+        ],
+        "action": "route",
+        "outbound": "Youtube"
+      },
+      {
+        "rule_set": "geosite-microsoft",
+        "action": "route",
+        "outbound": "Microsoft"
+      },
+      {
+        "rule_set": "geosite-cn",
+        "action": "route",
+        "outbound": "direct"
+      },
+      {
+        "rule_set": "geoip-telegram",
+        "action": "route",
+        "outbound": "Telegram"
+      },
+      {
+        "rule_set": "geoip-cn",
+        "action": "route",
+        "outbound": "direct"
+      },
+      {
+        "ip_is_private": true,
+        "outbound": "direct"
+      }
+    ],
+    "find_process": true,
+    "auto_detect_interface": true,
+    "final": "Proxy",
+    "rule_set": [
+      {
+        "type": "remote",
+        "tag": "geosite-youtube",
+        "format": "binary",
+        "url": "https://ghfast.top/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-youtube.srs",
+        "download_detour": "direct",
+        "update_interval": "24h"
+      },
+      {
+        "type": "remote",
+        "tag": "geosite-ai",
+        "format": "source",
+        "url": "https://ruleset.skk.moe/sing-box/non_ip/ai.json",
+        "download_detour": "direct",
+        "update_interval": "24h"
+      },
+      {
+        "type": "remote",
+        "tag": "geosite-microsoft",
+        "format": "binary",
+        "url": "https://ghfast.top/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-microsoft.srs",
+        "download_detour": "direct",
+        "update_interval": "24h"
+      },
+      {
+        "type": "remote",
+        "tag": "geosite-google",
+        "format": "binary",
+        "url": "https://ghfast.top/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-google.srs",
+        "download_detour": "direct",
+        "update_interval": "24h"
+      },
+      {
+        "type": "remote",
+        "tag": "geosite-cn",
+        "format": "binary",
+        "url": "https://ghfast.top/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-cn.srs",
+        "download_detour": "direct",
+        "update_interval": "24h"
+      },
+      {
+        "type": "remote",
+        "tag": "geosite-geolocation-!cn",
+        "format": "binary",
+        "url": "https://ghfast.top/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-geolocation-!cn.srs",
+        "download_detour": "direct",
+        "update_interval": "24h"
+      },
+      {
+        "type": "remote",
+        "tag": "geoip-telegram",
+        "format": "binary",
+        "url": "https://ghfast.top/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geoip/telegram.srs",
+        "download_detour": "direct",
+        "update_interval": "24h"
+      },
+      {
+        "type": "remote",
+        "tag": "geoip-cn",
+        "format": "binary",
+        "url": "https://ghfast.top/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geoip/cn.srs",
+        "download_detour": "direct",
+        "update_interval": "24h"
+      }
+    ],
+    "final": "proxy",
+    "auto_detect_interface": true,
+    "default_domain_resolver": "dns_direct"
+  },
+  "experimental": {
+    "cache_file": {
+      "enabled": true,
+      "path": "cache.db",
+      "store_fakeip": true,
+      "store_rdrc": true
+    },
+    "clash_api": {
+      "external_controller": "127.0.0.1:9090",
+      "external_ui": "ui",
+      "external_ui_download_url": "https://ghfast.top/https://github.com/Zephyruso/zashboard/archive/gh-pages.zip",
+      "external_ui_download_detour": "direct"
+    }
+  }
+}
