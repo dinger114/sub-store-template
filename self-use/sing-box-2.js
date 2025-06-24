@@ -1,41 +1,49 @@
-const { type, name } = $arguments
-const compatible_outbound = {
+const { type, name } = $arguments;
+
+const COMPATIBLE_OUTBOUND = {
   tag: 'COMPATIBLE',
   type: 'direct',
-}
+};
 
-let compatible
-let config = JSON.parse($files[0])
-let proxies = await produceArtifact({
+let config = JSON.parse($files[0]);
+let compatibleAdded = false;
+
+const proxies = await produceArtifact({
   name,
   type: /^1$|col/i.test(type) ? 'collection' : 'subscription',
   platform: 'sing-box',
   produceType: 'internal',
-})
+});
 
-config.outbounds.push(...proxies)
+// 添加 proxies 到 outbounds
+config.outbounds.push(...proxies);
 
-config.outbounds.forEach(i => {
-  if (Array.isArray(i.outbounds)) {
-    i.outbounds.push(...getTags(proxies))
-    if (i.tag !== "proxy" && !i.outbounds.includes("proxy")) {
-      i.outbounds.push("proxy")
+const proxyTags = getTags(proxies);
+
+// 处理每个 outbound
+for (const outbound of config.outbounds) {
+  if (Array.isArray(outbound.outbounds)) {
+    // 添加 proxies 的 tag
+    outbound.outbounds.push(...proxyTags);
+
+    // 确保有 "proxy" 标签
+    if (outbound.tag !== "proxy" && !outbound.outbounds.includes("proxy")) {
+      outbound.outbounds.push("proxy");
+    }
+
+    // 若为空，添加兼容标签
+    if (outbound.outbounds.length === 0 && !compatibleAdded) {
+      config.outbounds.push(COMPATIBLE_OUTBOUND);
+      compatibleAdded = true;
+      outbound.outbounds.push(COMPATIBLE_OUTBOUND.tag);
     }
   }
-})
+}
 
-config.outbounds.forEach(outbound => {
-  if (Array.isArray(outbound.outbounds) && outbound.outbounds.length === 0) {
-    if (!compatible) {
-      config.outbounds.push(compatible_outbound)
-      compatible = true
-    }
-    outbound.outbounds.push(compatible_outbound.tag)
-  }
-})
+// 输出结果
+$content = JSON.stringify(config, null, 2);
 
-$content = JSON.stringify(config, null, 2)
-
+// 工具函数
 function getTags(proxies, regex) {
-  return (regex ? proxies.filter(p => regex.test(p.tag)) : proxies).map(p => p.tag)
+  return (regex ? proxies.filter(p => regex.test(p.tag)) : proxies).map(p => p.tag);
 }
