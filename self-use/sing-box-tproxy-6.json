@@ -181,32 +181,20 @@
         "outbound": "direct"
       },
       {
-        "source_ip_cidr": [
-          "91.108.20.0/22",
-          "91.108.20.0/23",
-          "149.154.168.0/22",
-          "91.108.56.0/23",
-          "91.108.16.0/22"
+        "rule_set":[
+          "AS44907",
+          "AS62014"
         ],
         "action": "route",
         "outbound": "Telegram-DC5"
       },
       {
-        "source_ip_cidr": [
-          "91.108.12.0/22",
-          "149.154.172.0/22",
-          "91.108.4.0/22",
-          "91.108.8.0/22",
-          "91.108.56.0/22",
-          "95.161.64.0/20",
-          "149.154.160.0/22",
-          "149.154.160.0/23",
-          "149.154.162.0/23",
-          "149.154.164.0/22",
-          "149.154.164.0/23",
-          "149.154.166.0/23",
-          "91.105.192.0/23",
-          "185.76.151.0/24",
+        "rule_set":[
+          "AS59930",
+          "AS62041",
+          "AS211157"
+        ],
+        "ip_cidr": [
           "5.28.192.0/18",
           "109.239.140.0/24"
         ],
@@ -280,6 +268,46 @@
         "tag": "geoip-cn",
         "format": "binary",
         "url": "https://ghp.yeye.moe/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geoip/cn.srs",
+        "download_detour": "direct",
+        "update_interval": "24h"
+      },
+      {
+        "type": "remote",
+        "tag": "AS44907",
+        "format": "binary",
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/xishang0128/meta-rules-dat/refs/heads/sing/asn/AS44907.srs",
+        "download_detour": "direct",
+        "update_interval": "24h"
+      },
+      {
+        "type": "remote",
+        "tag": "AS62014",
+        "format": "binary",
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/xishang0128/meta-rules-dat/refs/heads/sing/asn/AS62014.srs",
+        "download_detour": "direct",
+        "update_interval": "24h"
+      },
+      {
+        "type": "remote",
+        "tag": "AS59930",
+        "format": "binary",
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/xishang0128/meta-rules-dat/refs/heads/sing/asn/AS59930.srs",
+        "download_detour": "direct",
+        "update_interval": "24h"
+      },
+      {
+        "type": "remote",
+        "tag": "AS62041",
+        "format": "binary",
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/xishang0128/meta-rules-dat/refs/heads/sing/asn/AS62041.srs",
+        "download_detour": "direct",
+        "update_interval": "24h"
+      },
+      {
+        "type": "remote",
+        "tag": "AS211157",
+        "format": "binary",
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/xishang0128/meta-rules-dat/refs/heads/sing/asn/AS211157.srs",
         "download_detour": "direct",
         "update_interval": "24h"
       }
