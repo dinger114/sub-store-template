@@ -196,7 +196,7 @@
         "type": "remote",
         "tag": "geosite-youtube",
         "format": "binary",
-        "url": "https://ghfast.top/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-youtube.srs",
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-youtube.srs",
         "download_detour": "direct",
         "update_interval": "24h"
       },
@@ -212,7 +212,7 @@
         "type": "remote",
         "tag": "geosite-microsoft",
         "format": "binary",
-        "url": "https://ghfast.top/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-microsoft.srs",
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-microsoft.srs",
         "download_detour": "direct",
         "update_interval": "24h"
       },
@@ -220,7 +220,7 @@
         "type": "remote",
         "tag": "geosite-google",
         "format": "binary",
-        "url": "https://ghfast.top/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-google.srs",
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-google.srs",
         "download_detour": "direct",
         "update_interval": "24h"
       },
@@ -228,7 +228,7 @@
         "type": "remote",
         "tag": "geosite-cn",
         "format": "binary",
-        "url": "https://ghfast.top/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-cn.srs",
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-cn.srs",
         "download_detour": "direct",
         "update_interval": "24h"
       },
@@ -236,7 +236,7 @@
         "type": "remote",
         "tag": "geosite-geolocation-!cn",
         "format": "binary",
-        "url": "https://ghfast.top/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-geolocation-!cn.srs",
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-geolocation-!cn.srs",
         "download_detour": "direct",
         "update_interval": "24h"
       },
@@ -244,7 +244,7 @@
         "type": "remote",
         "tag": "geoip-telegram",
         "format": "binary",
-        "url": "https://ghfast.top/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geoip/telegram.srs",
+        "url": "https://ghp.yeye.moe/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geoip/telegram.srs",
         "download_detour": "direct",
         "update_interval": "24h"
       },
@@ -252,7 +252,7 @@
         "type": "remote",
         "tag": "geoip-cn",
         "format": "binary",
-        "url": "https://ghfast.top/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geoip/cn.srs",
+        "url": "https://ghp.yeye.moe/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geoip/cn.srs",
         "download_detour": "direct",
         "update_interval": "24h"
       }
@@ -271,7 +271,7 @@
     "clash_api": {
       "external_controller": "127.0.0.1:9090",
       "external_ui": "ui",
-      "external_ui_download_url": "https://ghfast.top/https://github.com/Zephyruso/zashboard/archive/gh-pages.zip",
+      "external_ui_download_url": "https://ghp.yeye.moe/https://github.com/Zephyruso/zashboard/archive/gh-pages.zip",
       "external_ui_download_detour": "direct"
     }
   }
