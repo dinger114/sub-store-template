@@ -68,7 +68,7 @@
   "inbounds": [
     {
       "type": "mixed",
-      "tag": "mixed"
+      "tag": "mixed",
       "listen": "::",
       "listen_port": 7890,
       "set_system_proxy": false
