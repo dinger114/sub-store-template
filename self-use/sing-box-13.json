@@ -31,6 +31,11 @@
         "server": "dns_direct"
       },
       {
+        "clash_mode": "Global",
+        "action": "route",
+        "server": "fakeip"
+      },
+      {
         "rule_set": [
           "geosite-cn"
         ],
@@ -112,6 +117,13 @@
     },
     {
       "type": "selector",
+      "tag": "Apple",
+      "outbounds": [ ],
+      "default": "proxy",
+      "interrupt_exist_connections": true
+    },
+    {
+      "type": "selector",
       "tag": "Youtube",
       "outbounds": [ ],
       "default": "proxy",
@@ -148,6 +160,11 @@
         "action": "hijack-dns"
       },
       {
+        "clash_mode": "Global",
+        "action": "route",
+        "outbound": "GLOBAL"
+      },
+      {
         "clash_mode": "Direct",
         "action": "route",
         "outbound": "direct"
@@ -171,6 +188,14 @@
         ],
         "action": "route",
         "outbound": "Youtube"
+      },
+      {
+        "rule_set": [
+          "apple_ip",
+          "apple_domain"
+        ],
+        "action": "route",
+        "outbound": "Apple"
       },
       {
         "rule_set": "geosite-microsoft",
@@ -208,6 +233,20 @@
         "url": "https://ghfast.top/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-youtube.srs",
         "download_detour": "direct",
         "update_interval": "24h"
+      },
+      {
+        "tag": "apple_ip",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://ghfast.top/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo-lite/geoip/apple.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "apple_domain",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://ghfast.top/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo-lite/geosite/apple.srs",
+        "download_detour": "direct"
       },
       {
         "type": "remote",
