@@ -43,18 +43,9 @@
         "server": "dns_direct"
       },
       {
-        "type": "logical",
-        "mode": "and",
-        "rules": [
-          {
-            "rule_set": "geosite-geolocation-!cn"
-          },
-          {
-            "query_type": [
-              "A",
-              "AAAA"
-            ]
-          }
+        "query_type": [
+        	"A",
+        	"AAAA"
         ],
         "action": "route",
         "server": "remote"
